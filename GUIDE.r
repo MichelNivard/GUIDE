@@ -19,8 +19,8 @@ guide <- function(betas, L = 100) {
   
   ica_res <- fastICA(UVc, n.comp = L, maxit = 10000, tol = 1e-6)
   
-  W_XL <- ica_res$S[1:M, ]
-  W_LT <- t(ica_res$S[-(1:M), ])
+  W_XL <- ica_res$S[1:M, ] *sqrt(2)
+  W_LT <- t(ica_res$S[-(1:M), ]) * sqrt(2)
   mix <- ica_res$A
   
   return(list(W_XL = W_XL, W_LT = W_LT, Sc = Sc, mix = mix))

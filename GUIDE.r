@@ -38,3 +38,21 @@ guide <- function(betas, L = 100) {
 # 4. The output of the function is a list containing the required components, instead of returning them as separate variables.
 
 # The functionality of the two implementations should be the same, with the R version using the appropriate R packages and syntax.
+
+# R versino of var comp:
+
+var_comp <- function(betas, W) {
+  M <- max(dim(W))
+  if (ncol(W) == M) {
+    W <- t(W)
+  }
+  
+  if (nrow(betas) == M) {
+    G <- t(betas) %*% W
+  } else {
+    G <- betas %*% W
+  }
+  var_comp <- t(t(G^2) / colSums(G^2))
+  return(var_comp)
+}
+

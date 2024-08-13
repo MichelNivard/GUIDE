@@ -2,9 +2,12 @@
 # R version of GUIDE model given an M x T matrix of summary statistics (`betas'), where M = number of genetic variants
 # and T is the number of traits
 
-guide <- function(betas, L = 100) {
+# Dependencies:
   library(fastICA)
   library(Matrix)
+
+guide <- function(betas, L = 100) {
+
 
   M <- max(dim(betas))
   
